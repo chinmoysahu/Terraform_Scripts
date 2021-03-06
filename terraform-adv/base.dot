@@ -1,0 +1,54 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.bastion (expand)" [label = "aws_instance.bastion", shape = "box"]
+		"[root] aws_s3_bucket.remote_state_bucket (expand)" [label = "aws_s3_bucket.remote_state_bucket", shape = "box"]
+		"[root] aws_security_group.bastion_sg (expand)" [label = "aws_security_group.bastion_sg", shape = "box"]
+		"[root] output.bastion_public_ip" [label = "output.bastion_public_ip", shape = "note"]
+		"[root] output.instance_id" [label = "output.instance_id", shape = "note"]
+		"[root] output.s3_bucket_arn" [label = "output.s3_bucket_arn", shape = "note"]
+		"[root] output.s3_bucket_id" [label = "output.s3_bucket_id", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.AppName" [label = "var.AppName", shape = "note"]
+		"[root] var.Env" [label = "var.Env", shape = "note"]
+		"[root] var.HostIp" [label = "var.HostIp", shape = "note"]
+		"[root] var.PrivateIp" [label = "var.PrivateIp", shape = "note"]
+		"[root] var.access_key" [label = "var.access_key", shape = "note"]
+		"[root] var.ami_id" [label = "var.ami_id", shape = "note"]
+		"[root] var.bucket_name" [label = "var.bucket_name", shape = "note"]
+		"[root] var.instancetype" [label = "var.instancetype", shape = "note"]
+		"[root] var.my_key" [label = "var.my_key", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.secret_key" [label = "var.secret_key", shape = "note"]
+		"[root] var.subnetid" [label = "var.subnetid", shape = "note"]
+		"[root] aws_instance.bastion (expand)" -> "[root] aws_security_group.bastion_sg (expand)"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.AppName"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.Env"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.ami_id"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.instancetype"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.my_key"
+		"[root] aws_instance.bastion (expand)" -> "[root] var.subnetid"
+		"[root] aws_s3_bucket.remote_state_bucket (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.remote_state_bucket (expand)" -> "[root] var.bucket_name"
+		"[root] aws_security_group.bastion_sg (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.bastion_sg (expand)" -> "[root] var.HostIp"
+		"[root] aws_security_group.bastion_sg (expand)" -> "[root] var.PrivateIp"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.bastion_public_ip"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.instance_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.s3_bucket_arn"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.s3_bucket_id"
+		"[root] output.bastion_public_ip" -> "[root] aws_instance.bastion (expand)"
+		"[root] output.instance_id" -> "[root] aws_instance.bastion (expand)"
+		"[root] output.s3_bucket_arn" -> "[root] aws_s3_bucket.remote_state_bucket (expand)"
+		"[root] output.s3_bucket_id" -> "[root] aws_s3_bucket.remote_state_bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.bastion (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket.remote_state_bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.access_key"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.region"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.secret_key"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
